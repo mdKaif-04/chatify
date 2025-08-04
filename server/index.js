@@ -11,7 +11,8 @@ const {app,server} = require('./socket/socket.js')
 // const app = express();
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: import.meta.process.env.FRONTEND_URL,
+    
     credentials: true,
   })
 )

@@ -1,5 +1,5 @@
 const express = require("express");
-const resgisterUser = require("../controller/registeruser.js");
+const resgisterUser = require("../controller/registerUser.js");
 const checkEmail = require("../controller/checkEmail.js");
 const checkPassword = require("../controller/checkPassword.js");
 const userDetails = require("../controller/userDetails.js");

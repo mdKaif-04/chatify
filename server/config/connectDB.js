@@ -8,7 +8,7 @@ async function connectDB() {
       console.log("MongoDB connected successfully!");
     });
     connection.on("error", (error) => {
-      console.error(`Error while connecting to MongoDB: ${error.message}`);
+      console.error(`Error while connectin to MongoDB: ${error.message}`);
     });
   } catch (error) {
     console.error(`Error connecting to MongoDB: ${error.message}`);

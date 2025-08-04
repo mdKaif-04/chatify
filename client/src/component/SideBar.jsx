@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { IoChatbubbleEllipses } from "react-icons/io5";
 import { FaUserPlus } from "react-icons/fa";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { BiLogOut } from "react-icons/bi";
 import Avatar from "./Avatar";
 import { useDispatch, useSelector } from "react-redux";
@@ -111,13 +111,15 @@ const SideBar = () => {
         <div className=" h-[calc(100vh-65px)] overflow-x-hidden overflow-y-auto scrollBar">
           {allUser.length === 0 && (
             <div className="mt-12">
+              <Link to={'/email'} className="bg-slate-600 hover:bg-slate-800 text-white font-bold w-fit mx-auto rounded px-3 justify-center flex h-10 items-center mt-5">Login </Link>
               <div className="flex items-center justify-center my-4 text-slate-600 hover:text-slate-800">
                 <GoArrowUpLeft size={50} />
               </div>
               <p className="text-lg text-center text-slate-600">
-                explore users to start a conversation
+                please Login to start a conversation
               </p>
             </div>
+            
           )}
           {allUser.map((conv, index) => {
             return (

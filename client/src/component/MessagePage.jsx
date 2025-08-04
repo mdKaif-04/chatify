@@ -94,7 +94,7 @@ const MessagePage = () => {
       });
       // Add message to the chat component here
       socketConnection.on("message", (data) => {
-        console.log("messageData", data);
+        // console.log("messageData", data);
         setAllMessage(data);
       });
 

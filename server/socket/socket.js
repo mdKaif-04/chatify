@@ -25,7 +25,7 @@ const io = new Server(server, {
 const onlineUser = new Set();
 
 io.on("connection", async (socket) => {
-  console.log("User connected", socket.id);
+  // console.log("User connected", socket.id);
   const token = socket.handshake.auth.token;
   // current user details from token
   const user = await getUserDetailsFromToken(token);
@@ -37,7 +37,7 @@ io.on("connection", async (socket) => {
   io.emit("onlineUser", Array.from(onlineUser));
 
   socket.on("message-page", async (userId) => {
-    console.log("userId", userId);
+    // console.log("userId", userId);
     const userDetails = await UserModel.findById(userId).select("-password");
     const payload = {
       _id: userDetails?._id,
@@ -72,7 +72,7 @@ io.on("connection", async (socket) => {
         { receiver: data?.sender, sender: data?.receiver },
       ],
     });
-    console.log("conversation", conversation);
+    // console.log("conversation", conversation);
     // when conversation not available
     if (!conversation) {
       const createConversation = await ConversationModel({
@@ -143,7 +143,7 @@ io.on("connection", async (socket) => {
 
   socket.on("disconnect", () => {
     onlineUser.delete(user?._id);
-    console.log("User disconnected", socket.id);
+    // console.log("User disconnected", socket.id);
   });
 });
 

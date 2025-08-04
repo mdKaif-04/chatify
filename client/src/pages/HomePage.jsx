@@ -15,7 +15,7 @@ const HomePage = () => {
 
 
 
-  console.log("online user : ", user);
+  // console.log("online user : ", user);
   const fatchUserDetails = async () => {
     try {
       const URL = `${ import.meta.env.VITE_REACT_APP_BACKEND_URL }/api/user-details`;
@@ -45,7 +45,7 @@ const HomePage = () => {
           }
       })
       socketconnection.on('onlineUser',(data)=>{
-        console.log('onlineUser',data)
+        // console.log('onlineUser',data)
         dispatch(setOnlineUser(data))
       })
       dispatch(setSocketConnection(socketconnection))

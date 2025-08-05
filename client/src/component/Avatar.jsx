@@ -2,7 +2,7 @@ import React from 'react'
 import { PiUserCircle } from "react-icons/pi";
 import { useSelector } from 'react-redux';
 
-const Avatar = ({userId,name,imageUrl.secure_url.secure_url,width,height}) => {
+const Avatar = ({userId,name,imageUrl,width,height}) => {
     const onlineUser = useSelector(state => state?.user?.onlineUser)
 
 
@@ -45,7 +45,7 @@ const Avatar = ({userId,name,imageUrl.secure_url.secure_url,width,height}) => {
   return (
     <div className={`text-slate-800  rounded-full font-bold relative`} style={{width : width+"px", height : height+"px" }}>
         {
-            imageUrl.secure_url ? (
+            imageUrl ? (
                 <img
                     src={imageUrl.secure_url}
                     width={width}

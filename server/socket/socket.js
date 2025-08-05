@@ -1,6 +1,6 @@
 const express = require("express");
 const { Server } = require("socket.io");
-const http = require("http");
+const https = require("https");
 const getUserDetailsFromToken = require("../helpers/getUserDetailsFromToken");
 const UserModel = require("../models/UserModel");
 const {
@@ -13,10 +13,10 @@ const app = express();
 
 // socket connection
 
-const server = http.createServer(app);
+const server = https.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: 'https://chatify-kaif.onrender.com',
+    origin: ['https://chatify-kaif.onrender.com'],
     credentials: true,
   },
 });

@@ -18,7 +18,7 @@ const HomePage = () => {
   // console.log("online user : ", user);
   const fatchUserDetails = async () => {
     try {
-      const URL = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/user-details`;
+      const URL = `${import.meta.env.VITE_REACT_APP_BACKEND_URL }/api/user-details`;
       const response = await axios({
         url: URL,
         withCredentials: true,

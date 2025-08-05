@@ -242,7 +242,7 @@ const MessagePage = () => {
             </div>
             <div className="bg-white p-3">
               <video
-                src={message.videoUrl.secure}
+                src={message.videoUrl.secure_url}
                 className="aspect-square w-full h-full max-w-sm m-2 object-scale-down"
                 controls
                 muted

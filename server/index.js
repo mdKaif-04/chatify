@@ -11,7 +11,7 @@ const {app,server} = require('./socket/socket.js')
 // const app = express();
 // app.use(
 //   cors({
-//                origin: 'https://chatify-kaif.onrender.com' ,
+//                origin: 'https://chatify-kf.onrender.com' ,
 
 //     credentials: true,
 //   })

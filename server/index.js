@@ -1,5 +1,5 @@
 const express = require("express");
-const cors = require("cors");
+// const cors = require("cors");
 require("dotenv").config();
 
 // Connect to MongoDB
@@ -9,13 +9,13 @@ const cookieParser = require("cookie-parser");
 const {app,server} = require('./socket/socket.js')
 
 // const app = express();
-app.use(
-  cors({
-               origin: 'https://chatify-kaif.onrender.com' ,
+// app.use(
+//   cors({
+//                origin: 'https://chatify-kaif.onrender.com' ,
     
-    credentials: true,
-  })
-)
+//     credentials: true,
+//   })
+// )
 app.use(express.json());
 app.use(cookieParser());
 

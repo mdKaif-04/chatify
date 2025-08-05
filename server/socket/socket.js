@@ -3,20 +3,24 @@ const { Server } = require("socket.io");
 const https = require("https");
 const getUserDetailsFromToken = require("../helpers/getUserDetailsFromToken");
 const UserModel = require("../models/UserModel");
-const {
-  ConversationModel,
-  MessageModel,
-} = require("../models/ConversationModel.js");
+const {ConversationModel, MessageModel} = require("../models/ConversationModel.js");
 const getConversation = require("../helpers/getConversation.js");
 
 const app = express();
+const cors = require('cors')
+
+app.use(cors({
+  origin: 'https://chatify-kaif.onrender.com',
+  credentials: true,
+}))
+
 
 // socket connection
 
 const server = https.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ['https://chatify-kaif.onrender.com'],
+    origin: 'https://chatify-kaif.onrender.com',
     credentials: true,
   },
 });

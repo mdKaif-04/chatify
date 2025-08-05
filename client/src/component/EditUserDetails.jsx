@@ -63,7 +63,7 @@ const EditUserDetails = ({onClose,user}) => {
         e.preventDefault()
         e.stopPropagation()
         try {
-            const URL = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/update-details`
+            const URL = `${import.meta.env.VITE_REACT_APP_BACKEND_URL }/api/update-details`
 
             const response = await axios({
                 method : 'post',

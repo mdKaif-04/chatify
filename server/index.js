@@ -12,7 +12,7 @@ const {app,server} = require('./socket/socket.js')
 // app.use(
 //   cors({
 //                origin: 'https://chatify-kaif.onrender.com' ,
-    
+
 //     credentials: true,
 //   })
 // )

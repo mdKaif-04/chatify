@@ -47,7 +47,7 @@ const Avatar = ({userId,name,imageUrl,width,height}) => {
         {
             imageUrl ? (
                 <img
-                    src={imageUrl.secure_url}
+                    src={imageUrl}
                     width={width}
                     height={height}
                     alt={name}

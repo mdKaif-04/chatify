@@ -10,7 +10,7 @@ const app = express();
 const cors = require('cors')
 
 app.use(cors({
-  origin: 'https://chatify-kf.onrender.com',
+  origin: process.env.FRONTEND_URL,
   credentials: true,
 }))
 
@@ -20,7 +20,7 @@ app.use(cors({
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: 'https://chatify-kf.onrender.com',
+    origin: process.env.FRONTEND_URL,
     credentials: true,
   },
 });

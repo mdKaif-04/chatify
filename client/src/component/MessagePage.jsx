@@ -58,7 +58,7 @@ const MessagePage = () => {
     setMessage((preve) => {
       return {
         ...preve,
-        imageUrl: uploadPhoto.secure_url,
+        imageUrl: uploadPhoto.url,
       };
     });
   };
@@ -76,7 +76,7 @@ const MessagePage = () => {
     setMessage((preve) => {
       return {
         ...preve,
-        videoUrl: uploadPhoto.secure_url,
+        videoUrl: uploadPhoto.url,
       };
     });
   };
@@ -155,7 +155,6 @@ const MessagePage = () => {
             <h3 className=" font-semibold text-lg text-slate-800 my-0 text-ellipsis line-clamp-1">
               {dataUser?.name}
             </h3>
-            {/* // dataUser.online? "Online" : "Last seen: " + new Date(dataUser.last_seen).toLocaleString() */}
             <p className=" -my-2">
               {dataUser.online ? (
                 <span className="text-green-700">Online</span>
@@ -192,7 +191,7 @@ const MessagePage = () => {
                 <div className="w-full ">
                   {msg?.imageUrl && (
                     <img
-                      src={msg?.imageUrl.secure_url}
+                      src={msg?.imageUrl}
                       alt=""
                       className="w-full h-full object-scale-down "
                     />
@@ -200,7 +199,7 @@ const MessagePage = () => {
 
                   {msg?.videoUrl && (
                     <video
-                      src={msg?.videoUrl.secure_url}
+                      src={msg?.videoUrl}
                       controls
                       className="w-full h-full object-scale-down "
                     />
@@ -224,7 +223,7 @@ const MessagePage = () => {
             </div>
             <div className="bg-white p-3">
               <img
-                src={message.imageUrl.secure_url}
+                src={message.imageUrl}
                 alt="uploaded Image"
                 className="aspect-square w-full h-full max-w-sm m-2 object-scale-down"
               />
@@ -242,7 +241,7 @@ const MessagePage = () => {
             </div>
             <div className="bg-white p-3">
               <video
-                src={message.videoUrl.secure_url}
+                src={message.videoUrl}
                 className="aspect-square w-full h-full max-w-sm m-2 object-scale-down"
                 controls
                 muted

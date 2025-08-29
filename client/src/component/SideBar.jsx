@@ -110,7 +110,7 @@ const SideBar = () => {
         <div className="h-16 flex items-center">
           <h2 className="font-bold p-4 text-slate-700  text-xl">Message</h2>
         </div>
-        <div className="bg-slate-300 p-[0.5px]"></div>
+        <div className="bg-slate-300 p-[0.6px]"></div>
         <div className=" h-[calc(100vh-65px)] overflow-x-hidden overflow-y-auto scrollBar">
           {allUser.length === 0 && (
             <div className="mt-12">

@@ -11,11 +11,11 @@ const { app, server } = require("./socket/socket.js");
 // const app = express();
 app.use(
   cors({
-    origin: 'https://chatify-kaif.vercel.app',
-
+    origin: process.env.FRONTEND_URL,
     credentials: true,
   })
 );
+console.log("thissssss origin express", process.env.FRONTEND_URL)
 app.use(express.json());
 app.use(cookieParser());
 

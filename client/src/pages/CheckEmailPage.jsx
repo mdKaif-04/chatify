@@ -24,7 +24,7 @@ const CheckEmailPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     e.stopPropagation()
-    const URL = `${import.meta.env.VITE_REACT_APP_BACKEND_URL }/api/email`
+    const URL = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/email`
     try {
       const  response = await axios.post(URL, data)
       toast.success("Email verified successfully! ")

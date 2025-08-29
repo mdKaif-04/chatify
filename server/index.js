@@ -8,14 +8,12 @@ const router = require("./routes/index.js");
 const cookieParser = require("cookie-parser");
 const { app, server } = require("./socket/socket.js");
 
-// const app = express();
 app.use(
   cors({
     origin: process.env.FRONTEND_URL,
     credentials: true,
   })
 );
-// console.log("thissssss origin express", process.env.FRONTEND_URL)
 app.use(express.json());
 app.use(cookieParser());
 
@@ -34,3 +32,16 @@ connectDB().then(() => {
     console.log("server is running on :" + PORT);
   });
 });
+
+app.use((req,res,next)=>{
+  res.header('Access-Control-Allow-Origin',process.env.FRONTEND_URL);
+  res.header('Access-Control-Allow-Credentials','true');
+  res.status(404).json({error:'Not Foundd'})
+  
+})
+app.use((err,req,res,next)=>{
+  res.header('Access-Control-Allow-Origin',process.env.FRONTEND_URL);
+  res.header('Access-Control-Allow-Credentials','true');
+  res.status(err.status || 500).json({error: err.message})
+  
+})

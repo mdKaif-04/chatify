@@ -1,13 +1,16 @@
 const express = require("express");
 const cors = require("cors");
+const http = require('http')
 require("dotenv").config();
 
 // Connect to MongoDB
 const connectDB = require("./config/connectDB");
 const router = require("./routes/index.js");
 const cookieParser = require("cookie-parser");
-const { app, server } = require("./socket/socket.js");
-
+const socketSetup = require("./socket/socket.js");
+ const app = express()
+ const server = http.createServer(app)
+ socketSetup(server);
 app.use(
   cors({
     origin: process.env.FRONTEND_URL,

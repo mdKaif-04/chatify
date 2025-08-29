@@ -1,29 +1,21 @@
-const express = require("express");
 const { Server } = require("socket.io");
-const http = require("http");
 const getUserDetailsFromToken = require("../helpers/getUserDetailsFromToken");
 const UserModel = require("../models/UserModel");
 const {ConversationModel, MessageModel} = require("../models/ConversationModel.js");
 const getConversation = require("../helpers/getConversation.js");
 
-const app = express();
-const cors = require('cors')
 
-app.use(cors({
-  origin: process.env.FRONTEND_URL,
-  credentials: true,
-}))
 
 
 // socket connection
+module.exports=(server)=>{
 
-const server = http.createServer(app);
-const io = new Server(server, {
-  cors: {
-    origin: process.env.FRONTEND_URL,
-    credentials: true,
-  },
-});
+  const io = new Server(server,{
+    cors: {
+      origin: process.env.FRONTEND_URL,
+      credentials: true,
+    },
+  });
 
 // online user
 const onlineUser = new Set();
@@ -31,15 +23,21 @@ const onlineUser = new Set();
 io.on("connection", async (socket) => {
   console.log("User connected", socket.id);
   const token = socket.handshake.auth.token;
+  if(!token){
+    throw new Error('Authentication token required')
+  }
   // current user details from token
   const user = await getUserDetailsFromToken(token);
-
+     if (!user) {
+        throw new Error('Invalid token');
+      }
+  
   // create a new room for the user
   socket.join(user?._id?.toString());
   onlineUser.add(user?._id?.toString());
-
+  
   io.emit("onlineUser", Array.from(onlineUser));
-
+  
   socket.on("message-page", async (userId) => {
     // console.log("userId", userId);
     const userDetails = await UserModel.findById(userId).select("-password");
@@ -112,7 +110,7 @@ io.on("connection", async (socket) => {
     //send conversation
     const conversationSender = await getConversation(data?.sender);
     const conversationReceiver = await getConversation(data?.receiver);
-
+    
     io.to(data?.sender).emit("conversation", conversationSender);
     io.to(data?.receiver).emit("conversation", conversationReceiver);
   });
@@ -144,14 +142,12 @@ io.on("connection", async (socket) => {
     io.to(user?._id?.toString()).emit("conversation", conversationSender);
     io.to(msgByUserId).emit("conversation", conversationReceiver);
   });
-
+  
   socket.on("disconnect", () => {
     onlineUser.delete(user?._id);
     console.log("User disconnected", socket.id);
   });
 });
 
-module.exports = {
-  server,
-  app,
-};
+}
+

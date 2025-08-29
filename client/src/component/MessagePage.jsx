@@ -181,7 +181,7 @@ const MessagePage = () => {
           {
           allMessage.map((msg, index) => {
             return (
-              <div
+              <div key={index}
                 className={`bg-amber-100 my-1  rounded w-fit min-w-13 md:max-w-sm max-w-[250px] lg:max-w-md text-wrap break-all ${
                   user._id === msg?.msgByUserId
                     ? "ml-auto text-slate-700 "

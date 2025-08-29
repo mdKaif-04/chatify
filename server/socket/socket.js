@@ -13,7 +13,7 @@ app.use(cors({
   origin: process.env.FRONTEND_URL,
   credentials: true,
 }))
-console.log("thissssss origin socket", process.env.FRONTEND_URL)
+// console.log("thissssss origin socket", process.env.FRONTEND_URL)
 
 
 // socket connection

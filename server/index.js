@@ -15,7 +15,7 @@ app.use(
     credentials: true,
   })
 );
-console.log("thissssss origin express", process.env.FRONTEND_URL)
+// console.log("thissssss origin express", process.env.FRONTEND_URL)
 app.use(express.json());
 app.use(cookieParser());
 

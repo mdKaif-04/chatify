@@ -11,7 +11,7 @@ const { app, server } = require("./socket/socket.js");
 // const app = express();
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: process.env.FRONTEND_URL || 'https://chatify-kaif.vercel.app',
 
     credentials: true,
   })
